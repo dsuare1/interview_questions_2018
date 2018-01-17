@@ -1,4 +1,4 @@
-const arr1 = ['theresa', 'derrick', 'theresa', 'eleanor', 'monica', 'kristi', 'kristi', 'theresa', 'eleanor', 'eleanor', 'eleanor', 'kim', 'mike', 'mike', 'pam', 'derrick', 'eleanor', 'kristi', 'eleanor'];
+const arr1 = ['elaine', 'jerry', 'elaine', 'timmy', 'estelle', 'carol', 'carol', 'elaine', 'timmy', 'timmy', 'timmy', 'frank', 'morty', 'morty', 'newman', 'jerry', 'timmy', 'carol', 'timmy'];
 
 const arr2 = ['multiple', 'multiple', 'multiple', 'multiple', 'multiple','multiple','multiple', 'mul tiple', 'mu lti ple', 'mu lti ple', 'mul tiple', 'multi ple', 'multi ple'];
 
@@ -8,7 +8,6 @@ const arr2 = ['multiple', 'multiple', 'multiple', 'multiple', 'multiple','multip
 function countStrWithHash(arr) {
 	// create a hash to track strings
 	const hash = {};
-	
 	// loop through the passed-in array using a forEach loop
 	arr.forEach((str) => {
 		// if the string is NOT present in the hash
@@ -25,9 +24,33 @@ function countStrWithHash(arr) {
 	return hash;
 }
 
-console.log(countStrWithHash(arr1));
-console.log(countStrWithHash(arr2));
+console.log(JSON.stringify(countStrWithHash(arr1), null, 2));
+/*
+output:
+{
+  "elaine": 3,
+  "jerry": 2,
+  "timmy": 6,
+  "estelle": 1,
+  "carol": 3,
+  "frank": 1,
+  "morty": 2,
+  "newman": 1
+}
+*/
 
+console.log(JSON.stringify(countStrWithHash(arr2), null, 2));
+/*
+output:
+{
+  "multiple": 7,
+  "mul tiple": 2,
+  "mu lti ple": 2,
+  "multi ple": 2
+}
+*/
+
+// /--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--/
 // /--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--/
 
 // approach 2 - for the second array, remove the whitespace in each array element so they essentially become the same
@@ -54,8 +77,15 @@ function countStrWithHashNoWhitespace(arr) {
 	return hash;
 }
 
-console.log(countStrWithHashNoWhitespace(arr2));
+console.log(JSON.stringify(countStrWithHashNoWhitespace(arr2), null, 2));
+/*
+output:
+{
+  "multiple": 13
+}
+*/
 
+// /--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--/
 // /--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--/
 
 // approach 3 - sort the array first, then use a tracking value to compare, resetting it and the count each time a new string is encountered
@@ -98,5 +128,28 @@ function countStrInSortedArray(arr) {
 	return hash;
 }
 
-console.log(countStrInSortedArray(arr1));
-console.log(countStrInSortedArray(arr2));
+console.log(JSON.stringify(countStrInSortedArray(arr1), null, 2));
+/*
+output:
+{
+  "carol": 3,
+  "elaine": 3,
+  "estelle": 1,
+  "frank": 1,
+  "jerry": 2,
+  "morty": 2,
+  "newman": 1,
+  "timmy": 6
+}
+*/
+
+console.log(JSON.stringify(countStrInSortedArray(arr2), null, 2));
+/*
+output:
+{
+  "mu lti ple": 2,
+  "mul tiple": 2,
+  "multi ple": 2,
+  "multiple": 7
+}
+*/
